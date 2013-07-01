@@ -1,6 +1,6 @@
 module Strawboss
   class Commander
- attr_reader :args
+    attr_reader :args
 
     def initialize(args)
       @args = args

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Subcontractor::Assassin do
+describe Strawboss::Assassin do
   let(:pid) { 345 }
   let(:first_gen_pids) { [33141, 17925] }
   let(:second_gen_pids) { [45228, 45229] }
-  let(:assassin) { Subcontractor::Assassin.new(pid, 'TERM') }
+  let(:assassin) { Strawboss::Assassin.new(pid, 'TERM') }
   let(:ps_shell_mock) { File.new(File.dirname(__FILE__) + "/support/ps_output.txt") }
 
   before do

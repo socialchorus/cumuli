@@ -25,7 +25,9 @@ module Strawboss
     end
 
     def ps_pids
-      @ps_pids ||= ps_shell.lines.map(&:split).map{|arr| [arr[0].to_i, arr[1].to_i]}
+      @ps_pids ||= ps_shell
+        .map(&:split)
+        .map{|arr| [arr[0].to_i, arr[1].to_i]}
     end
 
     def ps_shell

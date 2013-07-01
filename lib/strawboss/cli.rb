@@ -1,10 +1,3 @@
-$stdout.sync = true
-
-require_relative "terminal"
-require_relative "args"
-require_relative "commander"
-require_relative "assassin"
-
 module Strawboss
   class CLI
     def run
@@ -16,6 +9,8 @@ module Strawboss
     end
 
     def spawn_app
+      listen_for_signals
+
       Dir.chdir(args.dir) do
         command = Commander.new(args).build
         puts command
@@ -23,24 +18,42 @@ module Strawboss
       end
     end
 
+    def listen_for_signals
+      signals.each do |signal|
+        Signal.trap(signal) do
+          puts "caught #{signal} in strawboss"
+          kill_processes
+        end
+      end
+    end
+
+    def processes
+      @processes ||= []
+    end
+
+    def kill_processes
+      puts "killing processes #{processes}"
+      processes.each do |pid|
+        puts "killing process #{pid}"
+        Strawboss::Assassin.new(pid, 'SIGTERM').kill
+      end
+    end
+
+    def signals
+      ["SIGTERM", "SIGKILL", "SIGINT", "SIGHUP"]
+    end
+
     def spawn_terminal(command)
       terminal = Terminal.new(command) do |stdin, stdout, pid|
+        processes.push(pid)
+
         stdin.each { |line| print "#{args.name}: #{line}" }
 
-        trap("TERM") do
-          Strawboss::Assassin.new(pid, "TERM").kill
-        end
-
-        trap("INT") do
-          Strawboss::Assassin.new(pid, "INT").kill
-        end
-
-        trap("SIGTERM") do
-          Strawboss::Assassin.new(pid, "SIGTERM").kill
-        end
-
-        trap("SIGKILL") do
-          Strawboss::Assassin.new(pid, "SIGKILL").kill
+        signals.each do |signal|
+          trap(signal) do
+            puts 'trapped signal in the terminal'
+            Strawboss::Assassin.new(pid, signal).kill
+          end
         end
 
         until stdin.eof?
