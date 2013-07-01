@@ -3,4 +3,3 @@ rvm_trust_rvmrcs_flag=1
 rvm_gemset_create_on_use_flag=1
 
 rvm use 2.0.0@strawboss --create
-

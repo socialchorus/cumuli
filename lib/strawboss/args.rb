@@ -1,12 +1,9 @@
 module Strawboss
   class Args
-    attr_reader :argv
+    attr_reader :argv, :dir
 
     def initialize(argv)
       @argv = argv
-    end
-
-    def dir
       @dir ||= argv.shift
     end
 

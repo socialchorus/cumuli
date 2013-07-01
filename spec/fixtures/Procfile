@@ -1,3 +1,0 @@
-activator: strawboss ../../../activator -p 3000
-mactivator: strawboss ../../../mactivator -p 4000
-linktivator: strawboss ../../../linktivator -p 5000

@@ -1,14 +1,11 @@
-require 'pty'
-
 module Strawboss
   class Terminal
     VARS = ['GEM_HOME', 'GEM_PATH', 'RUBYOPT', 'RBENV_DIR']
 
-    attr_reader :command, :block
+    attr_reader :command
 
-    def initialize(command, &block)
+    def initialize(command)
       @command = command
-      @block = block
     end
 
     def bundled?
@@ -16,27 +13,18 @@ module Strawboss
     end
 
     def spawn
-      bundled? ? call_bundled : call_normal
+      bundled? ? call_bundled : execute_command
     end
 
     def call_bundled
       Bundler.with_clean_env do
         clear_env
-        call_normal
+        execute_command
       end
     end
 
-    def call_normal
-      PTY.spawn(command) do |read, write, pid|
-        begin
-          block.call(read, write, pid)
-        rescue Errno::EIO
-        ensure
-          Process.wait pid
-        end
-      end
-
-      $?.exitstatus
+    def execute_command
+      exec(command)
     end
 
     def clear_env

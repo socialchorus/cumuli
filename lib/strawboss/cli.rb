@@ -1,10 +1,3 @@
-$stdout.sync = true
-
-require_relative "terminal"
-require_relative "args"
-require_relative "commander"
-require_relative "assassin"
-
 module Strawboss
   class CLI
     def run
@@ -16,39 +9,34 @@ module Strawboss
     end
 
     def spawn_app
+      listen_for_signals
+
       Dir.chdir(args.dir) do
         command = Commander.new(args).build
-        puts command
+        puts "starting ... #{command}"
         spawn_terminal(command)
       end
     end
 
-    def spawn_terminal(command)
-      terminal = Terminal.new(command) do |stdin, stdout, pid|
-        stdin.each { |line| print "#{args.name}: #{line}" }
+    def signals
+      # these are the signals used by Foreman
+      ['TERM', 'INT', 'HUP']
+    end
 
-        trap("TERM") do
-          Strawboss::Assassin.new(pid, "TERM").kill
-        end
-
-        trap("INT") do
-          Strawboss::Assassin.new(pid, "INT").kill
-        end
-
-        trap("SIGTERM") do
-          Strawboss::Assassin.new(pid, "SIGTERM").kill
-        end
-
-        trap("SIGKILL") do
-          Strawboss::Assassin.new(pid, "SIGKILL").kill
-        end
-
-        until stdin.eof?
-          puts stdin.gets
+    def listen_for_signals
+      signals.each do |signal|
+        Signal.trap(signal) do
+          kill_process
         end
       end
+    end
 
-      terminal.spawn
+    def kill_process
+      Process.kill('SIGINT', Process.pid)
+    end
+
+    def spawn_terminal(command)
+      Terminal.new(command).spawn
     end
   end
 end

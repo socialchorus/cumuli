@@ -1,0 +1,2 @@
+loop_it_real_good: ruby loop.rb
+loop_it_half_ass: ruby half_loop.rb
