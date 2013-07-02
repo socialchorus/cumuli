@@ -6,11 +6,11 @@ require 'strawboss/version'
 Gem::Specification.new do |spec|
   spec.name          = "strawboss"
   spec.version       = Strawboss::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow"]
+  spec.email         = ["developers@socialchorus.com"]
+  spec.description   = %q{Strawboss runs several foreman processes in different directories}
+  spec.summary       = %q{Strawboss makes SOA on Heroku easier by delegating to Foreman in a Procfile}
+  spec.homepage      = "http://github.com/socialchorus/strawboss"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
