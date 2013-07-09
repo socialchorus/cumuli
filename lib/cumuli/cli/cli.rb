@@ -1,4 +1,4 @@
-module Strawboss
+module Cumuli
   class CLI
     def run
       spawn_app
@@ -32,7 +32,7 @@ module Strawboss
     end
 
     def kill_process
-      Process.kill('SIGINT', Process.pid)
+      Process.kill('INT', Process.pid)
     end
 
     def spawn_terminal(command)

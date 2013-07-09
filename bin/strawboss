@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require "strawboss"
-
-Strawboss::CLI.new.run

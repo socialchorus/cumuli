@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Strawboss::Args do
+describe Cumuli::Args do
   let(:argv) { ["../mactivator", "-p", "4000"] }
-  let(:args) { Strawboss::Args.new(argv) }
+  let(:args) { Cumuli::Args.new(argv) }
   
   it "#dir will return the first element passed in" do
     args.dir.should == "../mactivator"

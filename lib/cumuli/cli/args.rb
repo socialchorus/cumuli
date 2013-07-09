@@ -1,4 +1,4 @@
-module Strawboss
+module Cumuli
   class Args
     attr_reader :argv, :dir
 

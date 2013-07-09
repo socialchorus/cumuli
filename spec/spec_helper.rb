@@ -1,6 +1,6 @@
 here = File.dirname(__FILE__)
 
-require "#{here}/../lib/strawboss.rb"
+require "#{here}/../lib/cumuli"
 Dir["#{here}/support/**/*.rb"].each {|f| require f}
 
 require 'pty'

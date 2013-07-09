@@ -1,4 +1,4 @@
-module Strawboss
+module Cumuli
   class Commander
     attr_reader :args
 

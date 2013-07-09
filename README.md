@@ -1,4 +1,4 @@
-# Strawboss
+# Cumuli
 
 In the land of Service Oriented Architecture, knowing whether everything
 is communicating properly is hard. Strawboss is a tool for running many
@@ -17,7 +17,7 @@ See usage for more details.
 
 Add this line to your application's Gemfile:
 
-    gem 'strawboss'
+    gem 'cumuli'
 
 And then execute:
 
@@ -25,21 +25,49 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install strawboss
+    $ gem install cumuli
 
 ## Usage
 
-Strawboss is primarily a command-line interface that can be used via
-a parent Procfile that can point to other applications, with their own
-Procfiles. This is what the parent Procfile might look like:
+### Command line interface for Procfiles
 
-    rails_app_1: strawboss ../rails_app_1 -p 3000
-    rails_app_2: strawboss ../rails_app_2 -p 4000
-    node_app: strawboss ../node_app -p 5000
+Strawboss has a command-line interface that can be used via
+a parent Procfile. This allows procfiles to point to other
+applications, with their own Procfiles. This is what the parent
+ Procfile might look like:
 
-Currently, strawboss works via .rvmrc files. Ruby version files are not
-yet implemented, but strawboss will use the rvm environment described in
+    rails_app_1: cumuli ../rails_app_1 -p 3000
+    rails_app_2: cumuli ../rails_app_2 -p 4000
+    node_app: cumuli ../node_app -p 5000
+
+Currently, cumuli works via .rvmrc files. Ruby version files are not
+yet implemented, but cumuli will use the rvm environment described in
 the .rvmrc file.
+
+### App for intergration testing
+
+Running a set of applications in tandem is great for sandboxing, but
+ultimately we need to do integration testing across services and apps.
+Cumuli comes with an application component that can be run in test
+framework.
+
+    # Both initialization argument are optional
+    #   first argument: environment
+    #   second argument: whether to try to establish a connection to 
+    #     each of the apps with a port before continuing in the thread
+    app = Cumuli::App.new('test', false)
+
+    app.start # starts all the applications and services in the Procfile
+
+    app.pid # pid of top level foreman process
+
+    app.wait_for_app(5000) # wait for app on port 5000
+    # alternately app.wait_for_apps will wait for every app in the
+    # Procfile that has a port
+    # 
+    # or just don't pass false into the initializer!
+
+    app.stop # gracefully kills all the related processes
 
 ## Contributing
 

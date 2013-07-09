@@ -1,4 +1,4 @@
-module Strawboss
+module Cumuli
   class Terminal
     VARS = ['GEM_HOME', 'GEM_PATH', 'RUBYOPT', 'RBENV_DIR']
 

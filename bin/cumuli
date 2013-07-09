@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "cumuli"
+
+Cumuli::CLI.new.run

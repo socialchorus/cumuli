@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Strawboss::Commander do
+describe Cumuli::Commander do
   describe "#build" do
     let(:args) { mock({foreman_options: 'foreman-options-here'}) }
-    let(:commander) { Strawboss::Commander.new(args) }
+    let(:commander) { Cumuli::Commander.new(args) }
 
     context "application directory has no .rvmrc" do
       before do
