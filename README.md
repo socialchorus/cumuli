@@ -69,6 +69,12 @@ framework.
 
     app.stop # gracefully kills all the related processes
 
+## Known Issues
+
+If you start the Cumuli app and stop it the first time, it will successfully start and stop all processes.  However, if you use the same Cumuli app class to
+start and stop the processes again, it will fail to stop any of the
+processes.
+
 ## Contributing
 
 1. Fork it

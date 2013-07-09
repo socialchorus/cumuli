@@ -1,1 +1,2 @@
-loopy: ../../bin/strawboss ./loopy
+loopy:    ../../../bin/cumuli ./loopy
+nodified: ../../../bin/cumuli ./noded -p 2323

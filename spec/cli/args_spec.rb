@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Cumuli::Args do
+describe Cumuli::CLI::Args do
   let(:argv) { ["../mactivator", "-p", "4000"] }
-  let(:args) { Cumuli::Args.new(argv) }
+  let(:args) { Cumuli::CLI::Args.new(argv) }
   
   it "#dir will return the first element passed in" do
     args.dir.should == "../mactivator"

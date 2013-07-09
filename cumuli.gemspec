@@ -6,7 +6,7 @@ require 'cumuli/version'
 Gem::Specification.new do |spec|
   spec.name          = "cumuli"
   spec.version       = Cumuli::VERSION
-  spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow"]
+  spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow", "Roy Pfaffman"]
   spec.email         = ["developers@socialchorus.com"]
   spec.description   = %q{Cumuli runs several foreman processes in different directories}
   spec.summary       = %q{Cumuli makes SOA on Heroku easier by delegating to Foreman in a Procfile}
@@ -18,8 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "foreman"
+
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "foreman"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require "cumuli"
+require_relative "../lib/cumuli"
 
 Cumuli::CLI.new.run
