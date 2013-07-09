@@ -52,7 +52,7 @@ module Cumuli
     end
 
     def app_ports
-      @apps.map.values.compact
+      apps.map.values.compact
     end
 
     def wait_for_apps
@@ -65,7 +65,6 @@ module Cumuli
 
     def wait_for_app(port)
       logger.print "waiting for apps on port: #{port}"
-      
       timeout = wait_time || DEFAULT_WAIT_TIME
       Waiter.new("Application on port #{port} unavailable after #{timeout} seconds")
         .wait_until(timeout) { open_socket(port) }
