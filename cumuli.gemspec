@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'strawboss/version'
+require 'cumuli/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "strawboss"
-  spec.version       = Strawboss::VERSION
+  spec.name          = "cumuli"
+  spec.version       = Cumuli::VERSION
   spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow"]
   spec.email         = ["developers@socialchorus.com"]
-  spec.description   = %q{Strawboss runs several foreman processes in different directories}
-  spec.summary       = %q{Strawboss makes SOA on Heroku easier by delegating to Foreman in a Procfile}
-  spec.homepage      = "http://github.com/socialchorus/strawboss"
+  spec.description   = %q{Cumuli runs several foreman processes in different directories}
+  spec.summary       = %q{Cumuli makes SOA on Heroku easier by delegating to Foreman in a Procfile}
+  spec.homepage      = "http://github.com/socialchorus/cumuli"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
