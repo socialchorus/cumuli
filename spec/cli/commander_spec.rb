@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Cumuli::CLI::Commander do
   describe "#build" do
-    let(:args) { mock({foreman_options: 'foreman-options-here'}) }
-    let(:commander) { Cumuli::CLI::Commander.new(args) }
+    let(:command) { 'foreman start -p 3030' }
+    let(:commander) { Cumuli::CLI::Commander.new(command) }
 
     context "application directory has no .rvmrc" do
       before do
@@ -26,8 +26,8 @@ describe Cumuli::CLI::Commander do
       end
     end
 
-    it "ends with a call to foreman" do
-      commander.build.should match(/foreman start foreman-options-here$/)
+    it "concludes with the command" do
+      commander.build.should match(/#{command}$/)
     end
 
     describe "reading from the file system" do

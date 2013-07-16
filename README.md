@@ -69,6 +69,25 @@ framework.
 
     app.stop # gracefully kills all the related processes
 
+### Running command line tools in remote directories
+
+When working with a whole series of apps and processes, developers will need to run remote tasks that use that app's ruby version.
+Cumuli has a solution, rake tasks that can be run in those remote locations:
+
+    rake cumuli:remote['rake db:migrate RAILS_ENV=test'] DIR=../../mactivator
+
+The argument passed into the square brackets is the command that will be run in the directory with its Ruby environment. The DIR environmental
+variable is where this command will be performed.
+
+### Other useful rake tasks
+
+Sometimes things go wrong in the spinning up and spinning down of child processes. There are two rake files for inspecting and killing proceses that
+are likely related to cumuli.
+
+    rake cumuli:ps # shows a list of all the related processes
+
+    rake cumuli:kill # kills all those processes shown above
+
 ## Known Issues
 
 If you start the Cumuli app and stop it the first time, it will successfully start and stop all processes.  However, if you use the same Cumuli app class to

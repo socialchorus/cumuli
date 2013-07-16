@@ -1,14 +1,14 @@
 module Cumuli
   class CLI
     class Commander
-      attr_reader :args
+      attr_reader :command
 
-      def initialize(args)
-        @args = args
+      def initialize(command)
+        @command = command
       end
 
       def build
-        "#{rvm_preface} foreman start #{args.foreman_options}"
+        "#{rvm_preface} #{command}"
       end
 
       def rvm_preface

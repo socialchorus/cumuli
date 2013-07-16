@@ -12,7 +12,7 @@ module Cumuli
       listen_for_signals
 
       Dir.chdir(args.dir) do
-        command = Commander.new(args).build
+        command = Commander.new("foreman start #{args.foreman_options}").build
         puts "starting ... #{command}"
         spawn_terminal(command)
       end

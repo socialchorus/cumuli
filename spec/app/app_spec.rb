@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Cumuli::App do
   describe '#start' do
-    let(:opts) { 
+    let(:opts) {
       {
         env: 'test',
         wait: false,
