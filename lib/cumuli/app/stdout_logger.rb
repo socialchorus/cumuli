@@ -5,7 +5,7 @@ module Cumuli
       RESET = "\033[0m"
 
       def print(message)
-        puts "Nimbus: #{GRAY}#{message}#{RESET}"
+        puts "Cumuli: #{GRAY}#{message}#{RESET}"
       end
 
       def add_space
