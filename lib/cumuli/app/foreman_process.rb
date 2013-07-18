@@ -45,9 +45,16 @@ module Cumuli
 
       def stop
         return if @killed_it
-        Process.kill('INT', 0) # kills all processes in the group
+        kill_children
         @killed_it = true
         @pid = nil
+      end
+
+      def kill_children
+        pids = PS.new.tree(pid)
+        pids.reverse.each do |p|
+          Process.kill("KILL", p)
+        end
       end
     end
   end

@@ -45,9 +45,18 @@ module Cumuli
     end
 
     def tree(pid)
-      child_pids = ppid_hash[pid]
-      puts "#{pid} => #{child_pids}"
-      child_pids.map{|cpid| tree(cpid) } if child_pids  
+      collection = []
+      if kids = children(pid)
+        collection += kids
+        kids.each do |k|
+          collection += tree(k)
+        end
+      end
+      collection
+    end
+
+    def children(pid)
+      ppid_hash[pid]
     end
 
     def report(pid)
