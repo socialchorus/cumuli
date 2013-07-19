@@ -1,0 +1,118 @@
+  PID  PPID COMM             ARGS                                                             USER
+    1     0 /sbin/launchd    /sbin/launchd                                                    root          
+   12     1 /usr/libexec/kex /usr/libexec/kextd                                               root          
+   13     1 /usr/libexec/Use /usr/libexec/UserEventAgent -l System                            root          
+   14     1 /usr/sbin/notify /usr/sbin/notifyd                                                root          
+   15     1 /usr/sbin/diskar /usr/sbin/diskarbitrationd                                       root          
+   16     1 /usr/libexec/con /usr/libexec/configd                                             root          
+   17     1 /usr/sbin/syslog /usr/sbin/syslogd                                                root          
+   18     1 /usr/libexec/ope /usr/libexec/opendirectoryd                                      root          
+   19     1 /usr/sbin/distno /usr/sbin/distnoted daemon                                       root          
+   20     1 /System/Library/ /System/Library/CoreServices/powerd.bundle/powerd                root          
+   21     1 /System/Library/ /System/Library/Frameworks/CoreServices.framework/Versions/A/Fra root          
+   22     1 /usr/sbin/blued  /usr/sbin/blued                                                  root          
+   24     1 /System/Library/ /System/Library/CoreServices/coreservicesd                       root          
+   26     1 /usr/sbin/securi /usr/sbin/securityd -i                                           root          
+   34     1 /usr/sbin/ntpd   /usr/sbin/ntpd -c /private/etc/ntp-restrict.conf -n -g -p /var/r root          
+   38     1 /System/Library/ /System/Library/PrivateFrameworks/MobileDevice.framework/Version _usbmuxd      
+   41     1 /usr/libexec/sta /usr/libexec/stackshot -t                                        root          
+   44     1 /System/Library/ /System/Library/PrivateFrameworks/GenerationalStorage.framework/ root          
+   48     1 /System/Library/ /System/Library/CoreServices/backupd.bundle/Contents/Resources/m root          
+   50     1 /System/Library/ /System/Library/Frameworks/CoreServices.framework/Frameworks/Met root          
+   51     1 /usr/sbin/mDNSRe /usr/sbin/mDNSResponder -launchd                                 _mdnsresponder
+   53     1 /System/Library/ /System/Library/CoreServices/loginwindow.app/Contents/MacOS/logi socialchorus  
+   55     1 /usr/sbin/Kernel /usr/sbin/KernelEventAgent                                       root          
+   57     1 /usr/libexec/hid /usr/libexec/hidd                                                root          
+   59     1 /sbin/dynamic_pa /sbin/dynamic_pager -F /private/var/vm/swapfile                  root          
+   64     1 autofsd          autofsd                                                          root          
+   86     1 /System/Library/ /System/Library/Frameworks/ApplicationServices.framework/Framewo _windowserver 
+   87     1 /usr/sbin/netbio /usr/sbin/netbiosd                                               _netbios      
+   95     1 /System/Library/ /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries root          
+  107     1 /System/Library/ /System/Library/CoreServices/logind                              root          
+  111     1 /usr/sbin/coreau /usr/sbin/coreaudiod                                             _coreaudiod   
+  132     1 /sbin/launchd    /sbin/launchd                                                    socialchorus  
+  135   132 /usr/libexec/Use /usr/libexec/UserEventAgent -l Aqua                              socialchorus  
+  137   132 /usr/sbin/distno /usr/sbin/distnoted agent                                        socialchorus  
+  142   132 /Applications/Go /Applications/Google Chrome.app/Contents/MacOS/Google Chrome -ps socialchorus  
+  143   132 /usr/sbin/pboard /usr/sbin/pboard                                                 socialchorus  
+  145   132 /Applications/Ut /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal -ps socialchorus  
+  151   132 /System/Library/ /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock        socialchorus  
+  152   132 /System/Library/ /System/Library/CoreServices/talagent                            socialchorus  
+  153   132 /System/Library/ /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/S socialchorus  
+  154   132 /System/Library/ /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder    socialchorus  
+  161   132 /System/Library/ /System/Library/Frameworks/ApplicationServices.framework/Framewo socialchorus  
+  167     1 com.apple.dock.e com.apple.dock.extra                                             socialchorus  
+  170   132 /System/Library/ /System/Library/Image Capture/Support/Image Capture Extension.ap socialchorus  
+  197     1 /usr/sbin/fileco /usr/sbin/filecoordinationd                                      root          
+  201   132 /System/Library/ /System/Library/Services/AppleSpell.service/Contents/MacOS/Apple socialchorus  
+  206   132 /Users/socialcho /Users/socialchorus/Library/Application Support/1Password/Agent/ socialchorus  
+  244   132 /usr/libexec/war /usr/libexec/warmd_agent                                         socialchorus  
+  251   132 /System/Library/ /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/C socialchorus  
+  257   132 /usr/local/opt/r /usr/local/opt/redis/bin/redis-server /usr/local/etc/redis.conf  socialchorus  
+  258   132 /usr/local/Cella /usr/local/Cellar/erlang/R15B03-1/lib/erlang/erts-5.9.3.1/bin/be socialchorus  
+  259   132 /usr/local/opt/p /usr/local/opt/postgresql/bin/postgres -D /usr/local/var/postgre socialchorus  
+  279   132 /System/Library/ /System/Library/CoreServices/Menu Extras/TextInput.menu/Contents socialchorus  
+  280   132 /Applications/iT /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Content socialchorus  
+  287     1 /usr/local/Cella /usr/local/Cellar/erlang/R15B03-1/lib/erlang/erts-5.9.3.1/bin/ep socialchorus  
+  294   259 postgres: checkp postgres: checkpointer process                                   socialchorus  
+  295   259 postgres: writer postgres: writer process                                         socialchorus  
+  296   259 postgres: wal wr postgres: wal writer process                                     socialchorus  
+  297   259 postgres: autova postgres: autovacuum launcher process                            socialchorus  
+  298   259 postgres: stats  postgres: stats collector process                                socialchorus  
+  314   258 inet_gethost     inet_gethost 4                                                   socialchorus  
+  315   314 inet_gethost     inet_gethost 4                                                   socialchorus  
+  476   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+  480     1 /System/Library/ /System/Library/Frameworks/CoreMediaIO.framework/Resources/VDC.p root          
+  635   132 /Applications/Si /Applications/SizeUp.app/Contents/MacOS/SizeUp -psn_0_196656     socialchorus  
+  636   132 /System/Library/ /System/Library/CoreServices/System Events.app/Contents/MacOS/Sy socialchorus  
+ 1181   132 /usr/bin/ssh-age /usr/bin/ssh-agent -l                                            socialchorus  
+ 3407   132 /System/Library/ /System/Library/Frameworks/CoreServices.framework/Frameworks/Met socialchorus  
+ 9711     1 /System/Library/ /System/Library/CoreServices/backupd.bundle/Contents/Resources/m root          
+12532   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+13700   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+18651   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+21361   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+24124     1 /sbin/launchd    /sbin/launchd                                                    _spotlight    
+24126 24124 /System/Library/ /System/Library/Frameworks/CoreServices.framework/Frameworks/Met _spotlight    
+24127 24124 /usr/sbin/distno /usr/sbin/distnoted agent                                        _spotlight    
+31310   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+33165   132 /System/Library/ /System/Library/Frameworks/InputMethodKit.framework/Resources/im socialchorus  
+39847   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+42063   132 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+43458   132 /usr/libexec/lsb /usr/libexec/lsboxd                                              socialchorus  
+44874   132 /Applications/1P /Applications/1Password.app/Contents/MacOS/1Password -psn_0_5612 socialchorus  
+55087   142 /Applications/Go /Applications/Google Chrome.app/Contents/Versions/27.0.1453.116/ socialchorus  
+62807   132 /Applications/Te /Applications/TextMate.app/Contents/MacOS/TextMate -psn_0_268763 socialchorus  
+68282   132 /Applications/CC /Applications/CCMenu.app/Contents/MacOS/CCMenu -psn_0_2941646    socialchorus  
+71315     1 /usr/local/Cella /usr/local/Cellar/macvim/7.3-66/MacVim.app/Contents/MacOS/MacVim socialchorus  
+73066   151 /System/Library/ /System/Library/CoreServices/Dock.app/Contents/Resources/Dashboa socialchorus  
+86518     1 /usr/local/Cella /usr/local/Cellar/macvim/7.3-66/MacVim.app/Contents/MacOS/Vim -f socialchorus  
+87838     1 /usr/libexec/tas /usr/libexec/taskgated -p -s                                     root          
+45925   145 login            login -pf socialchorus                                           root          
+45926 45925 -bash            -bash                                                            socialchorus  
+57983   145 login            login -pf socialchorus                                           root          
+57984 57983 -bash            -bash                                                            socialchorus  
+28280     1 foreman: master  foreman: master                                                  socialchorus  
+28282 28280 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28283 28280 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@nimbus exec for socialchorus  
+28320 28282 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28321 28283 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@nimbus exec for socialchorus  
+28322 28320 foreman: master  foreman: master                                                  socialchorus  
+28323 28321 foreman: master  foreman: master                                                  socialchorus  
+28550 28322 ruby             ruby loop.rb                                                     socialchorus  
+28551 28322 ruby             ruby half_loop.rb                                                socialchorus  
+28552 28323 node             node nodified.js                                                 socialchorus  
+28562     1 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28564     1 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28638 28562 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28639 28638 foreman: master  foreman: master                                                  socialchorus  
+28657 28564 bash             bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus  
+28659 28657 foreman: master  foreman: master                                                  socialchorus  
+29102 28639 ruby             ruby loop.rb                                                     socialchorus  
+29103 28639 ruby             ruby half_loop.rb                                                socialchorus  
+29106 28659 ruby             ruby loop.rb                                                     socialchorus  
+29107 28659 ruby             ruby half_loop.rb                                                socialchorus  
+29142 69064 ps               ps axo pid,ppid,comm,args,user                                   root          
+29143 69064 mate             mate                                                             socialchorus  
+69063   145 login            login -pf socialchorus                                           root          
+69064 69063 -bash            -bash                                                            socialchorus  

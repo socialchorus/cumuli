@@ -51,11 +51,11 @@ module Cumuli
       end
 
       def kill_children
-        pids = PS.new.tree(pid)
+        pids = PS.new.family(pid)
         pids.reverse.each do |p|
           begin
             Process.kill("KILL", p)
-          rescue Errno::ESRCH => e
+          rescue Errno::ESRCH
             puts "Small issue killing your child: #{p}; it looks to be dead"
           end
         end

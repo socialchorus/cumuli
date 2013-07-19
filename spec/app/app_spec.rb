@@ -24,7 +24,7 @@ describe Cumuli::App do
     end
 
     it "launches subprocesses with the foreman command" do
-      ps_line = Cumuli::PS.new.matching.detect{|line| line.match(/foreman: master/) }
+      ps_line = Cumuli::PS.new.foremans
       ps_line.should_not be_nil
     end
 

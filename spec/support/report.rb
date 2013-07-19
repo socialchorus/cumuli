@@ -1,0 +1,3 @@
+def report_text
+  "28280 1 foreman: master foreman: master socialchorus\n28282 28280 bash bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus\n28283 28280 bash bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@nimbus exec for socialchorus\n28320 28282 bash bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@cumuli exec for socialchorus\n28322 28320 foreman: master foreman: master socialchorus\n28550 28322 ruby ruby loop.rb socialchorus\n28551 28322 ruby ruby half_loop.rb socialchorus\n28321 28283 bash bash /Users/socialchorus/.rvm/bin/rvm ruby-2.0.0@nimbus exec for socialchorus\n28323 28321 foreman: master foreman: master socialchorus\n28552 28323 node node nodified.js socialchorus"
+end
