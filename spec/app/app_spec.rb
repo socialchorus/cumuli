@@ -16,7 +16,7 @@ describe Cumuli::App do
     before do
       clear_logs
       app.start
-      app.wait_for_app(2323)
+      app.wait_for_apps
     end
 
     after do

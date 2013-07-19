@@ -32,7 +32,7 @@ module Cumuli
     end
 
     def apps
-      @apps ||= Procs.new(app_dir)
+      @apps ||= Procs.new(app_dir).apps
     end
 
     def pid
@@ -56,29 +56,22 @@ module Cumuli
     end
 
     def wait_for_apps
-      app_ports.each do |port|
-        wait_for_app(port)
+      logger.add_space
+      apps.each do |app|
+        log_and_wait(app)
       end
-
       logger.add_space
     end
 
-    def wait_for_app(port)
-      logger.print "waiting for apps on port: #{port}"
+    def log_and_wait(app)
       timeout = wait_time || DEFAULT_WAIT_TIME
-      Waiter.new("Application on port #{port} unavailable after #{timeout} seconds")
-        .wait_until(timeout) { open_socket(port) }
-      logger.print "Application on #{port} available"
+      logger.print "Waiting for app named '#{app.name}' at #{app.url}"
+      app.wait(timeout)
+      logger.print "Application '#{app.name}' on #{app.url} available"
+      logger.add_space
     rescue Exception => e
       stop
       raise e
-    end
-
-    def open_socket(port)
-      TCPSocket.new('localhost', port)
-      true
-    rescue Errno::ECONNREFUSED
-      false
     end
 
     def stop

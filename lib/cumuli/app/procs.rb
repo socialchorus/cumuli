@@ -28,24 +28,6 @@ module Cumuli
       def names
         map.keys
       end
-
-      class SubApp
-        attr_reader :parts
-
-        def initialize(line)
-          @parts = line.split
-        end
-
-        def name
-          parts.first.gsub(':', '')
-        end
-
-        def port
-          if index = parts.find_index('-p')
-            parts[index + 1] && parts[index + 1].to_i
-          end
-        end
-      end
     end
   end
 end
