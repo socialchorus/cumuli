@@ -23,10 +23,16 @@ module Cumuli
         host != 'localhost' || port
       end
 
-      def wait(timeout)
+      def wait_for_start(timeout)
         return unless waitable?
-        Waiter.new("Application on port #{port} unavailable after #{timeout} seconds")
-          .wait_until(120) { socket_available? }
+        Waiter.new("Application #{name} on port #{port} unavailable after #{timeout} seconds")
+          .wait_until(timeout) { socket_available? }
+      end
+
+      def wait_for_stop(timeout)
+        return unless waitable?
+        Waiter.new("Application #{name} on port #{port} still connected after #{timeout} seconds")
+          .wait_until(timeout) { !socket_available? }
       end
 
       def url

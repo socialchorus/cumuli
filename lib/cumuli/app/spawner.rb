@@ -1,6 +1,6 @@
 module Cumuli
   class App
-    class ForemanProcess
+    class Spawner
       attr_reader :pid, :env, :log_dir
 
       def initialize(env, log_dir)
@@ -15,7 +15,7 @@ module Cumuli
       end
 
       def command
-        "HEROKU_ENV=#{env} RAILS_ENV=#{env} foreman start"
+        "foreman start"
       end
 
       def log_file
@@ -24,9 +24,17 @@ module Cumuli
 
       def start
         @pid = fork do
-          listen_for_signals
-          $stdout.reopen(log_file)
-          exec(command)
+          spawn(
+            {
+              'HEROKU_ENV' => env,
+              'RAILS_ENV' => env
+            },
+            command,
+            {
+              out: $stdout.reopen(log_file),
+              pgroup: true, # start a new process group
+            }
+          )
         end
       end
 
@@ -50,16 +58,14 @@ module Cumuli
         @pid = nil
       end
 
+      def group_id
+        PS.new.root_pid
+      end
+
       def kill_children
-        pids = PS.new.family(pid)
-        pids.reverse.each do |p|
-          begin
-            Process.kill("KILL", p)
-          rescue Errno::ESRCH
-            puts "Small issue killing your child: #{p}; it looks to be dead"
-          end
-        end
+        Process.kill('INT', -group_id) # kills the forked group
       end
     end
   end
 end
+

@@ -15,11 +15,19 @@ module Cumuli
     def start
       return if foreman_process.started?
 
-      Dir.chdir(app_dir) do 
+      Dir.chdir(app_dir) do
         listen_for_signals
         logger.print "Starting ..."
         foreman_process.start
         wait_for_apps if wait?
+      end
+    end
+
+    def stop
+      if foreman_process.started?
+        foreman_process.stop
+        wait_for_apps('stop') if wait?
+        @foreman_process = nil
       end
     end
 
@@ -28,15 +36,19 @@ module Cumuli
     end
 
     def foreman_process
-      @termial ||= ForemanProcess.new(env, log_dir)
+      @foreman_process ||= Spawner.new(env, log_dir)
     end
 
     def apps
       @apps ||= Procs.new(app_dir).apps
     end
 
+    def process_pids
+      PS.new.family
+    end
+
     def pid
-      foreman_process.pid
+      foreman_process.group_id
     end
 
     def wait?
@@ -46,39 +58,29 @@ module Cumuli
     def listen_for_signals
       SIGNALS.each do |signal|
         trap(signal) do
+          puts "#{self.class}: trapped signal #{signal} in #{Process.pid} ... stopping"
           stop
         end
       end
     end
 
-    def app_ports
-      apps.map.values.compact
-    end
-
-    def wait_for_apps
+    def wait_for_apps(direction = 'start')
       logger.add_space
       apps.each do |app|
-        log_and_wait(app)
+        log_and_wait(app, direction)
       end
       logger.add_space
     end
 
-    def log_and_wait(app)
+    def log_and_wait(app, direction)
       timeout = wait_time || DEFAULT_WAIT_TIME
-      logger.print "Waiting for app named '#{app.name}' at #{app.url}"
-      app.wait(timeout)
-      logger.print "Application '#{app.name}' on #{app.url} available"
+      logger.print "#{direction}: waiting for app named '#{app.name}' at #{app.url}"
+      app.send("wait_for_#{direction}", timeout)
+      logger.print "#{direction}: application '#{app.name}' on #{app.url} complete"
       logger.add_space
     rescue Exception => e
       stop
       raise e
-    end
-
-    def stop
-      if foreman_process.started?
-        foreman_process.stop
-        @foreman_process = nil
-      end
     end
   end
 end

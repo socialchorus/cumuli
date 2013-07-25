@@ -12,6 +12,7 @@ describe Cumuli::CLI::Terminal do
     end
   end
 
+  # TODO: this generates lots of noise when it is killed
   it "spawns a new thread that runs the command" do
     preserving_env do
       pid = fork do
