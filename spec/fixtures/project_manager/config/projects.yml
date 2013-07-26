@@ -1,0 +1,71 @@
+activator:
+  repository: git@github.com:socialchorus/activator.git
+  database_yml: config/database.yml
+  database_sample_yml: config/database.example.yml
+  type: app
+  port: 3000
+  setup_scripts:
+    - bundle
+    - rake db:create:all
+    - rake db:migrate
+
+mactivator:
+  repository: git@github.com:socialchorus/mactivator.git
+  database_yml: config/database.yml
+  database_sample_yml: config/database.example.yml
+  type: app
+  port: 4000
+  setup_scripts:
+    - bundle
+
+bossanova:
+  repository: git@github.com:socialchorus/bossanova.git
+  database_yml: config/database.yml
+  database_sample_yml: config/database.example.yml
+  type: app
+  port: 6000
+  setup_scripts:
+    - bundle
+    - rake db:drop:all
+    - rake db:create:all
+    - rake db:migrate
+
+linktimigrator:
+  repository: git@github.com:socialchorus/linktimigrator.git
+  database_yml: database.json
+  database_sample_yml: ../linktivator/database.json.sample
+  type: helper
+  setup_scripts:
+    - bundle
+    - ruby bin/migrate.rb
+
+linktivator:
+  repository: git@github.com:socialchorus/linktivator.git
+  database_yml: database.json
+  database_sample_yml: database.json.sample
+  type: app
+  port: 5000
+  setup_scripts:
+    - bundle
+    - npm install
+
+augury:
+  repository: git@github.com:socialchorus/augury.git
+  type: node
+  port: 5010
+  setup_scripts:
+    - bundle
+    - npm install
+
+transducer:
+  repository: git@github.com:socialchorus/transducer.git
+  database_yml:
+    - config/activator_database.yml
+    - config/bossanova_database.yml']
+  database_sample_yml:
+    - config/activator_database.example.yml
+    - config/bossanova_database.example.yml
+  type: service
+  setup_scripts:
+    - bundle
+

@@ -1,0 +1,6 @@
+loopy:
+  type: service
+nodified:
+  path: ./noded
+  port: 2323
+

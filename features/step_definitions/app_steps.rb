@@ -1,5 +1,5 @@
 Given(/^the app suite is loaded$/) do
-  @app = Cumuli::App.new({
+  @app = Cumuli::Spawner::App.new({
     env: 'test',
     wait_time: 5,
     log_dir: File.dirname(__FILE__) + "/../../spec/fixtures/log",

@@ -25,7 +25,7 @@ module Cumuli
 
       def get_passed_command
         matched = argv.first.match(/\[(.*)\]/)
-        matched && matched[1]
+        (matched && matched[1]) || argv.first
       end
 
       def command

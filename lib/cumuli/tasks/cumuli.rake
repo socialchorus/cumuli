@@ -1,42 +1,53 @@
-require_relative "../ps"
-require_relative "../cli/remote_command"
-require_relative "../cli/commander"
-require_relative "../cli/terminal"
+require_relative "../../cumuli"
 
 namespace :cumuli do
-  namespace :kill do
-    desc "kill all foreman related processes"
-    task :all do
-      ps = Cumuli::PS.new
-      ps.kill(ps.foremans.map(&:pid))
+  namespace :project do
+    desc "install submodules and run setup scripts based on the project.yml"
+    task :setup do
+      Cumuli::ProjectManager::Manager.new.setup
     end
 
-    desc "kill the first spawned foreman process"
-    task :root do
-      ps = Cumuli::PS.new
-      ps.kill
+    desc "copy database config and rerun setup scripts"
+    task :config do
+      Cumuli::ProjectManager::Manager.new.setup_projects
     end
   end
 
-  desc "kill the root process"
-  task :kill => ['cumuli:kill:root']
+  namespace :ps do
+    namespace :kill do
+      desc "kill all foreman related processes"
+      task :all do
+        ps = Cumuli::PS.new
+        ps.kill(ps.foremans.map(&:pid))
+      end
 
-  namespace :int do
-    desc "interrupt all foreman related processes"
-    task :all do
-      ps = Cumuli::PS.new
-      ps.int(ps.foremans.map(&:pid))
+      desc "kill the first spawned foreman process"
+      task :root do
+        ps = Cumuli::PS.new
+        ps.kill
+      end
     end
 
-    desc "kill the first spawned foreman process"
-    task :root do
-      ps = Cumuli::PS.new
-      ps.int
+    desc "kill the root process"
+    task :kill => ['cumuli:kill:root']
+
+    namespace :int do
+      desc "interrupt all foreman related processes"
+      task :all do
+        ps = Cumuli::PS.new
+        ps.int(ps.foremans.map(&:pid))
+      end
+
+      desc "kill the first spawned foreman process"
+      task :root do
+        ps = Cumuli::PS.new
+        ps.int
+      end
     end
+
+    desc "interrupt the root process"
+    task :int => ['cumuli:int:root']
   end
-
-  desc "interrupt the root process"
-  task :int => ['cumuli:int:root']
 
   desc "look at the list of foreman related processes"
   task :ps do

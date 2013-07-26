@@ -1,6 +1,6 @@
 module Cumuli
-  class App
-    class Spawner
+  module Spawner
+    class ForemanProc
       attr_reader :pid, :env, :log_dir
 
       def initialize(env, log_dir)

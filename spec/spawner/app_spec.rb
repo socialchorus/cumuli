@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cumuli::App do
+describe Cumuli::Spawner::App do
   let(:opts) {
     {
       env: 'test',
@@ -9,7 +9,7 @@ describe Cumuli::App do
       app_dir: app_set_dir
     }
   }
-  let(:app) { Cumuli::App.new(opts) }
+  let(:app) { Cumuli::Spawner::App.new(opts) }
   let(:logs) { File.readlines("#{log_dir}/test.log") }
 
   describe '#start' do

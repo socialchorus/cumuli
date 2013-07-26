@@ -1,5 +1,5 @@
 module Cumuli
-  class App
+  module Spawner
     class StdoutLogger
       GRAY = "\033[0;37m"
       RESET = "\033[0m"

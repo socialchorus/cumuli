@@ -55,7 +55,7 @@ framework.
     #   first argument: environment
     #   second argument: whether to try to establish a connection to 
     #     each of the apps with a port before continuing in the thread
-    app = Cumuli::App.new('test', false)
+    app = Cumuli::Spawner::App.new('test', false)
 
     app.start # starts all the applications and services in the Procfile
 
@@ -90,9 +90,9 @@ are likely related to cumuli.
 
 ## Known Issues
 
-If you start the Cumuli app and stop it the first time, it will successfully start and stop all processes.  However, if you use the same Cumuli app class to
-start and stop the processes again, it will fail to stop any of the
-processes.
+* An occasional orphan will be left around, still debugging
+* Mechanism for alerting spawner app that the foreman process has killed
+  children needs to be faster and more direct
 
 ## Contributing
 
