@@ -6,6 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'logger'
 require 'timeout'
 require 'fileutils'
+require 'yaml'
 
 require "cumuli/facade"
 require "cumuli/ps"

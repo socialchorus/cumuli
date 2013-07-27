@@ -11,6 +11,11 @@ namespace :cumuli do
     task :config do
       Cumuli::ProjectManager::Manager.new.setup_projects
     end
+
+    desc "publish Procfile from projects.yml"
+    task :publish do
+      Cumuli::ProjectManager::Manager.new.publish
+    end
   end
 
   namespace :ps do
@@ -29,7 +34,7 @@ namespace :cumuli do
     end
 
     desc "kill the root process"
-    task :kill => ['cumuli:kill:root']
+    task :kill => ['cumuli:ps:kill:root']
 
     namespace :int do
       desc "interrupt all foreman related processes"
@@ -46,7 +51,7 @@ namespace :cumuli do
     end
 
     desc "interrupt the root process"
-    task :int => ['cumuli:int:root']
+    task :int => ['cumuli:ps:int:root']
   end
 
   desc "look at the list of foreman related processes"

@@ -6,7 +6,7 @@ module Cumuli
 
       attr_reader :name, :database_config, :database_sample_config, :port, :path,
         :repository, :type, :setup_scripts, :wait_time, :domain
-      
+
       def initialize(name, opts)
         @name = name
 
@@ -50,12 +50,17 @@ module Cumuli
         "http://#{domain}#{port ? ":#{port}" : ''}"
       end
 
+      def full_path(partial_path)
+        partial_path.gsub!(/^\.\//, '')
+        "#{Dir.pwd}/#{partial_path}"
+      end
+
       def database_sample_paths
-        database_sample_config.map { |config_path| "#{path}/#{config_path}" }
+        database_sample_config.map { |config_path| full_path("#{path}/#{config_path}") }
       end
 
       def database_config_paths
-        database_config.map { |config_path| "#{path}/#{config_path}" }
+        database_config.map { |config_path| full_path("#{path}/#{config_path}") }
       end
 
       def database_configured?(path)
@@ -70,7 +75,7 @@ module Cumuli
 
       def write_database_config
         database_config_paths.each_with_index do |config_path, i|
-          FileUtils.cp(database_sample_paths[i], config_path) unless configured?(config_path)
+          FileUtils.cp(database_sample_paths[i], config_path) unless database_configured?(config_path)
         end
       end
 
@@ -90,15 +95,21 @@ module Cumuli
         system "git submodule add #{repository} #{path}" if repository
       end
 
+      def run_command(command)
+        fork do
+          CLI::RemoteCommand.new([command, "DIR=#{path}"]).perform
+        end
+      end
+
       def setup
         # checkout master, because sometimes on setup no branch is
         # checked out
-        CLI::RemoteCommand.new(['git checkout master', "DIR=#{path}"])
+        run_command 'git checkout master'
 
         write_database_config
 
         setup_scripts.each do |script|
-          CLI::RemoteCommand.new([script, "DIR=#{path}"]).perform
+          run_command script
         end
       end
     end

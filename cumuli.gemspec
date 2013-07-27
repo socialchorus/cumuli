@@ -6,7 +6,7 @@ require 'cumuli/version'
 Gem::Specification.new do |spec|
   spec.name          = "cumuli"
   spec.version       = Cumuli::VERSION
-  spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow", "Roy Pfaffman", "Sowjanya Mudunuri"]
+  spec.authors       = ["SocialChorus", "Kane Baccigalupi", "Fito von Zastrow", "Roy Pfaffman", "Sowjanya Mudunuri", "Bonnie Kwong"]
   spec.email         = ["developers@socialchorus.com"]
   spec.description   = %q{Cumuli runs several foreman processes in different directories}
   spec.summary       = %q{Cumuli makes SOA on Heroku easier by delegating to Foreman in a Procfile}

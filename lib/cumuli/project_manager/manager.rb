@@ -20,6 +20,7 @@ module Cumuli
       end
 
       def setup
+        publish
         submodules_init
         system('git submodule init')
         system('git submodule update')

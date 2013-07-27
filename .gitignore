@@ -19,3 +19,6 @@ tmp
 Procfile
 log/*.log
 spec/fixtures/log/*.log
+
+config
+Procfile
