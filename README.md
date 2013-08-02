@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/socialchorus/cumuli.png)](https://codeclimate.com/github/socialchorus/cumuli)
+
 # Cumuli
 
 In the land of Service Oriented Architecture, knowing whether everything
