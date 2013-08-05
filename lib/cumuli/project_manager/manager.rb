@@ -40,6 +40,10 @@ module Cumuli
         @projects ||= config.map{ |name, opts| Cumuli::ProjectManager::Project.new(name, opts) }
       end
 
+      def project(name)
+        projects.detect{|p| p.name == name}
+      end
+
       def config
         @config ||= YAML.load( File.read(config_path) )
       end

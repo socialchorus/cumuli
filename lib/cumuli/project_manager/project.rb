@@ -96,9 +96,11 @@ module Cumuli
       end
 
       def run_command(command)
-        fork do
-          CLI::RemoteRakeCommand.new([command, "DIR=#{path}"]).perform
+        puts "#{ANSI.blue_on_red} #{name}: #{command} #{ANSI.ansi}"
+        pid = fork do
+          CLI::RemoteCommander.new(command, path).perform
         end
+        Process.wait pid
       end
 
       def setup
