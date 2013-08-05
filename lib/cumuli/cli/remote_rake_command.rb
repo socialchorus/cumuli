@@ -1,12 +1,13 @@
 module Cumuli
   class CLI
-    class RemoteCommand
+    class RemoteRakeCommand
       attr_reader :argv
 
       DIR_ENV = 'DIR='
       COMMAND_ENV= 'COMMAND='
 
       def initialize(argv)
+        puts "argv: #{argv.inspect}"
         @argv = argv
       end
 
@@ -34,6 +35,7 @@ module Cumuli
 
       def perform
         Dir.chdir(dir) do
+          puts "running #{command}, at #{dir}"
           Terminal.new(command).spawn
         end
       end

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Cumuli::CLI::RemoteCommand do
+describe Cumuli::CLI::RemoteRakeCommand do
   let(:argv) { ["cumuli:remote[rake db:migrate]", "DIR=./mactivator"] }
-  let(:remote_command) { Cumuli::CLI::RemoteCommand.new(argv) }
+  let(:remote_command) { Cumuli::CLI::RemoteRakeCommand.new(argv) }
 
   it "parses the directory from the arguments" do
     remote_command.dir.should == "./mactivator"

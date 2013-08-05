@@ -97,7 +97,7 @@ module Cumuli
 
       def run_command(command)
         fork do
-          CLI::RemoteCommand.new([command, "DIR=#{path}"]).perform
+          CLI::RemoteRakeCommand.new([command, "DIR=#{path}"]).perform
         end
       end
 

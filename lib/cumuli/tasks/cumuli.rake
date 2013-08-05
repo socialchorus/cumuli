@@ -61,6 +61,6 @@ namespace :cumuli do
 
   desc "run a remote command with the right ruby: rake cumuli:remote ../my_app rake db:migrate"
   task :remote do |command|
-    Cumuli::CLI::RemoteCommand.new(ARGV).perform
+    Cumuli::CLI::RemoteRakeCommand.new(ARGV).perform
   end
 end
