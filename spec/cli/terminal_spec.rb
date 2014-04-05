@@ -16,8 +16,8 @@ describe Cumuli::CLI::Terminal do
   it "spawns a new thread that runs the command" do
     preserving_env do
       pid = fork do
-        Cumuli::CLI::Terminal.new('STRAWBOSSED=true').spawn
-        ENV['STRAWBOSSED'].should == true
+        Cumuli::CLI::Terminal.new('CUMULI=true').spawn
+        ENV['CUMULI'].should == true
       end
 
       Process.kill('INT', pid)

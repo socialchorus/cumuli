@@ -3,12 +3,12 @@
 # Cumuli
 
 In the land of Service Oriented Architecture, knowing whether everything
-is communicating properly is hard. Strawboss is a tool for running many
+is communicating properly is hard. Cumuli is a tool for running many
 foreman runnable applications, in different directories, from a single
 process. This is a great way to see if the services that are distributed
 over Heroku apps, actually are working together as expected.
 
-We use strawboss as a way to reality check in a full development
+We use cumuli as a way to reality check in a full development
 sandbox; to write integration specs; and as a staging ground for broad
 ranging deploy scripts or data migrations.
 
@@ -33,7 +33,7 @@ Or install it yourself as:
 
 ### Command line interface for Procfiles
 
-Strawboss has a command-line interface that can be used via
+Cumuli has a command-line interface that can be used via
 a parent Procfile. This allows procfiles to point to other
 applications, with their own Procfiles. This is what the parent
  Procfile might look like:
@@ -55,7 +55,7 @@ framework.
 
     # Both initialization argument are optional
     #   first argument: environment
-    #   second argument: whether to try to establish a connection to 
+    #   second argument: whether to try to establish a connection to
     #     each of the apps with a port before continuing in the thread
     app = Cumuli::Spawner::App.new('test', false)
 
@@ -66,7 +66,7 @@ framework.
     app.wait_for_app(5000) # wait for app on port 5000
     # alternately app.wait_for_apps will wait for every app in the
     # Procfile that has a port
-    # 
+    #
     # or just don't pass false into the initializer!
 
     app.stop # gracefully kills all the related processes
