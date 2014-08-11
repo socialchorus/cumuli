@@ -12,11 +12,11 @@ module Cumuli
       end
 
       def rvm_preface
-        "rvm ruby-#{rvm_version} exec" if rvmrc?
+        "ruby"
       end
 
       def rvmrc_descriptor
-        './.rvmrc'
+        './.ruby-version'
       end
 
       def rvmrc?
@@ -24,7 +24,7 @@ module Cumuli
       end
 
       def rvm_version
-        File.read(rvmrc_descriptor).match(/(\d\.\d\.\d@\w+)/)[0]
+        File.read(rvmrc_descriptor)
       end
     end
   end

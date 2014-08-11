@@ -33,7 +33,7 @@ describe Cumuli::CLI::Commander do
     describe "reading from the file system" do
       it "prefaces with the right rvm information" do
         Dir.chdir(File.dirname(__FILE__) + "/../fixtures/app_set/loopy") do
-          commander.build.should include('rvm ruby-2.0.0')
+          commander.build.should include('2.0.0-p451')
         end
       end
     end
